@@ -1,0 +1,50 @@
+<form [formGroup]="newPackageForm" class="form">
+   
+    <h1>Adicionar nuevo producto</h1>
+
+    <mat-form-field>
+        <input matInput type="text" placeholder="Ingrese Nombre Remitiente" formControlName="sender" id="sender" >
+        <mat-hint align="end">Máximo 20 caracteres</mat-hint>
+        <mat-error *ngIf="myError('sender', 'required')">El address es obligatorio</mat-error>
+        <mat-error *ngIf="myError('sender', 'maxlength')">El nombre es muy largo, debe ser como máximo 20 caracteres</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Ingrese Nombre Recibidor" formControlName="recipient" id="recipient" >
+        <mat-hint align="end">Máximo 20 caracteres</mat-hint>
+        <mat-error *ngIf="myError('recipient', 'required')">El address es obligatorio</mat-error>
+        <mat-error *ngIf="myError('recipient', 'maxlength')">El nombre es muy largo, debe ser como máximo 20 caracteres</mat-error>
+      </mat-form-field>
+  
+   
+    <mat-form-field>
+      <input matInput type="text" placeholder="Ingrese Destinacion" formControlName="address" id="address" >
+      <mat-hint align="end">Máximo 200 caracteres</mat-hint>
+      <mat-error *ngIf="myError('address', 'required')">Destinacion es obligatoria</mat-error>
+      <mat-error *ngIf="myError('address', 'maxlength')">La Destinacion es muy larga, debe ser como máximo 200 caracteres</mat-error>
+    </mat-form-field>
+  
+    
+    <mat-form-field>
+      <input matInput type="numeric" placeholder="Ingrese Peso" formControlName="weight" id="weight" num>
+      <mat-error *ngIf="myError('weight', 'required')">El peso es obligatorio</mat-error>
+      <mat-error *ngIf="myError('weight', 'pattern')">El peso debe ser numérico</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Ingrese Código Postal" formControlName="postal" id="postal" >
+      <mat-error *ngIf="myError('postal', 'required')">El código postal es obligatorio</mat-error>
+      <mat-error *ngIf="myError('postal', 'pattern')">El código debe ser 5 dígitos</mat-error>
+    </mat-form-field>
+  
+ 
+    <div>
+      <button mat-raised-button color="secondary" class="btn" (click)="onNoClick()" >Cancelar</button>
+      <button mat-raised-button color="primary" class="btn" (click)="onSubmit()">
+        <!-- <span  *ngIf="isEdit">Modificar</span> -->
+        <span >Crear</span>
+      </button>
+    </div>
+  </form>
+  

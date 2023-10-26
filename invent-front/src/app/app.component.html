@@ -1,0 +1,45 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+  <span>
+    <button  mat-button routerLink="/"><mat-icon>IN</mat-icon></button>
+    <span  *ngIf="isAuthenticated">Hola, {{usuario.nombre}}</span>
+  </span>
+  <span class="spacer"></span>
+  <div fxLayout="row" fxShow="false"  fxShow.gt-sm>
+
+    <button mat-button *ngIf="isAuthenticated && usuario?.role==='ROLE_ADMIN'" routerLink="/types">
+      <mat-icon>list</mat-icon>
+      Types
+    </button>
+
+    <button mat-button *ngIf="isAuthenticated && usuario?.role==='ROLE_ADMIN'" routerLink="/codes">
+      <mat-icon>list</mat-icon>
+      Codigos
+    </button>
+
+    <button mat-button *ngIf="isAuthenticated && usuario?.role==='ROLE_ADMIN'" routerLink="/users">
+      <mat-icon>list</mat-icon>
+      Usuarios
+    </button>
+
+    <button mat-button *ngIf="(isAuthenticated)" routerLink="/packages">
+      <mat-icon>
+        payments
+        </mat-icon>
+      Envios
+    </button>
+    <span class="spacer"></span>
+    <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Salir
+    </button>
+    <button mat-button *ngIf="!isAuthenticated" routerLink="/login">
+      <mat-icon>power_settings_new</mat-icon>
+      Entrar
+    </button>
+
+
+  </div>
+</mat-toolbar>
+
+
+<div class="container"><router-outlet></router-outlet></div>

@@ -1,0 +1,12 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+
+mat-toolbar {
+  max-height: 10vh;
+}
+
+.container { 
+margin-right: 20%;
+    margin-left: 20%; 
+}

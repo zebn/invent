@@ -1,0 +1,144 @@
+#%RAML 1.0
+title: Ejemplo RAML
+baseUri: https://localhost:3001/api/{version}
+version: v1
+
+types:
+    Login:
+        properties:
+            id:
+                required: false
+                type: integer
+            nombre:
+                required: false
+                type: integer
+            email: string
+            pass: string
+            role:
+                required: false
+                type: string
+    
+    Package:
+        properties:
+            id:
+                required: false
+                type: number
+            address: string
+            postal: string
+            sender: string
+            recipient: string
+            weight: string
+            price: 
+                required: false
+                type: number
+            transport: 
+                required: false
+                type: string
+
+    Type:
+        properties:
+            name: string
+            initnum: integer
+            finnum: integer
+            
+    Code:
+        properties:
+            name: string
+            code: string
+
+    
+
+
+/Login:
+    get:
+        description: Obtiene un listado de los usuarios
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: Login[]
+    /{email}:
+        get:
+            description: Obtiene un usuario
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: Login        
+    post:
+        description: Crea una nueva seccion de login
+        body:
+            application/json:
+                type: Login
+        responses:
+            201:
+                description: Login creado. Retorna el identificador del nuevo login
+                body:
+                    application/json:
+                        type: integer
+                        description: Identificador del nuevo login  
+
+
+/Types:
+    get: 
+        description: Obtiene un listado
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: Type[]
+   
+/Codes:
+    get: 
+        description: Obtiene un listado
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: Code[]
+   
+
+/Packages:
+    get: 
+        description: Obtiene un listado
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: Package[]
+    /{id}:
+        get:
+            description: Obtiene un
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: Package   
+        delete:
+            description: Delete Package
+            responses: 
+                202:
+                    description: delete pack     
+
+    post:
+        description: post Package
+        body:
+            application/json:
+                type: Package
+        responses:
+            201:
+                body:
+                    application/json:
+                        type: Package
+
+
+              
+
+/Usuarioregistrado:
+    get:
+        description: Obtiene un usuario
+        responses:
+            200:
+                body:
+                    application/json:
+                        type: Login
